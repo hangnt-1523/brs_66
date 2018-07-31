@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   resources :books, only: %i(index show)
   resources :categories
   resources :comments
+  resources :comments do
+    member do
+      get :new_reply
+    end
+  end
+  resources :likes, expect: :index
 end

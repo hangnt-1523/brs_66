@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :mark_books
   has_many :orders
   has_many :follows
+  has_many :liked, through: :likes, source: :book
 
   validates :username, presence: true,
    length: {maximum: Settings.user.name.length}
@@ -52,5 +53,21 @@ class User < ApplicationRecord
 
   def current_user? user
     user == self
+  end
+
+  def liked? book
+    liked.include? book
+  end
+
+  def like book
+    liked << book
+    end
+
+  def unlike book
+    liked.destroy book
+  end
+
+  def current_like book
+    likes.find_by book_id: book.id
   end
 end

@@ -1,0 +1,8 @@
+<%= form_for(current_user.likes.build, remote: true) do |f| %>
+  <div><%= hidden_field_tag :book_id, @book.id %></div>
+  <div><%= hidden_field_tag :user_id, current_user.id %></div>
+  <button type="submit" class="btn btn-default">
+    <span class="glyphicon glyphicon-thumbs-down"></span> <%= t ".like" %>
+  </button>
+  <%= @book.likes.count %> <%= t ".other" %>
+<% end %>

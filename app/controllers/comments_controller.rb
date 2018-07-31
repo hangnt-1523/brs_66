@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :load_comment, only: %i(edit update destroy)
+  before_action :load_comment, except: %i(index new create)
   before_action :logged_in_user, expect: :index
 
   def new; end
@@ -42,10 +42,17 @@ class CommentsController < ApplicationController
     end
   end
 
+  def new_reply
+    respond_to do |format|
+      format.html {redirect_to @comment.book}
+      format.js
+    end
+  end
+
   private
 
   def comment_params
-    params.require(:comment).permit :content, :book_id, :user_id
+    params.require(:comment).permit :content, :book_id, :user_id, :parent_id
   end
 
   def load_comment

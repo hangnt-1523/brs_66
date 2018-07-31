@@ -6,6 +6,8 @@
         <%= image_tag @book.image, class: "show-book" %>
       </div>
     </div>
+    <hr>
+    <%= render "like_form" %>
   </div>
   <div class="col-sm-6">
     <div class="title">
@@ -20,6 +22,6 @@
 <div class="row">
   <%= render "comment_form" %>
 </div>
-<div class="comment">
-  <%= render @comments %>
-</div>
+<div class="comment"></div>
+<%= render @comments %>
+

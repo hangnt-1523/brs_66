@@ -1,10 +1,11 @@
+
 <%= form_for @comment, remote: true, id: "edit-cmt-#{@comment.id}" do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <%= f.hidden_field :book_id %>
   <%= f.hidden_field :user_id %>
   <div class="form-group">
     <%= f.text_area :content, class: "form-control",
-      rows: Settings.comment.rows, id: "content#{@comment.user_id}"  %>
+      rows: Settings.comment.rows, id: "content-#{@comment.user_id}"  %>
   </div>
   <%= f.submit t(".submit"), class: "btn btn-primary" %>
 <% end %>

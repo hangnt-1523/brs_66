@@ -32,6 +32,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def likes
+    @books = current_user.liked.page(params[:page]).per Settings.per_page
+  end
+
   private
 
   def user_params

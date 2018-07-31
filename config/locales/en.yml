@@ -110,6 +110,13 @@ en:
       submit: "Comment"
     show:
       comment: "Comment"
+    like:
+      like: "Like"
+      and: "You and "
+      other: "other user liked."
+    unlike:
+      like: "Like"
+      other: "other user liked."
 
   comments:
     comment:
@@ -118,9 +125,12 @@ en:
       edit: "Edit"
       delete: "Delete"
       confirm: "You sure delete?"
+      reply: "Reply"
     load_comment:
       danger: "Not find commnet!"
     edit:
       submit: "Save"
     update:
       danger: "Update comment not success!"
+    new_reply:
+      submit: "Reply"

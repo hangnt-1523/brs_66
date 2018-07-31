@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2018_08_01_062957) do
     t.text "content"
     t.integer "user_id"
     t.integer "book_id"
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_comments_on_book_id"

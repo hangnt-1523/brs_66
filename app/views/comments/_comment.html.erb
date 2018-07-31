@@ -10,10 +10,16 @@
     <div id = "content-<%= comment.id %>">
       <p><%= comment.content %></p>
     </div>
+    <% if comment.parent? and logged_in? %>
+      <%= link_to t(".reply"), new_reply_comment_path(comment), remote: true,
+        id: "comment-#{comment.id}" %>
+    <% end %>
     <% if comment.user.current_user? current_user %>
       <%= link_to t(".edit"), edit_comment_path(comment), remote: true %>
       <%= link_to t(".delete"), comment, method: :delete,
         data: {confirm: t(".confirm")}, remote: true %>
     <% end %>
+    <hr>
+    <%= render comment.replies if comment.replies.any? %>
   </div>
 </div>
