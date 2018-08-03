@@ -104,6 +104,7 @@ en:
     index:
       title: "List books"
       $: "$"
+      search: "Search"
     load_book:
       danger: "Not find book!"
     comment_form:
