@@ -1,11 +1,12 @@
 class Admin::BooksController < Admin::AdminController
   before_action :load_book, except: %i(index new create)
+<<<<<<< 4c0401f0c8751e0bee660a51833783e2b6ad0b7c
   before_action :list_categories, only: :index
 
   def index
     @search_books = Book.ransack params[:q]
     @books = @search_books.result.includes(:category).order_by
-               .page(params[:page]).per Settings.book.per_page
+                          .page(params[:page]).per Settings.book.per_page
   end
 
   def new
