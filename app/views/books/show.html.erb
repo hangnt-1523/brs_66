@@ -36,6 +36,10 @@
         <%= social_share_button_tag @book.name, url: book_path(@book),
           desc: @book.name %>
       </div>
+      <div class="share-book">
+        <%= social_share_button_tag @book.name, url: book_path(@book),
+        desc: @book.name %>
+      </div>
     <% end %>
     <hr>
     <%= render "like_form" %>
