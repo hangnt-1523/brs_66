@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :confirmable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackables
+         :recoverable, :rememberable, :validatable, :trackables,
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+
   attr_accessor :remember_token
 
   has_many :comments
@@ -31,6 +33,24 @@ class User < ApplicationRecord
   class << self
     def search key
       where("username LIKE ? OR email LIKE ?", "%#{key}%", "%#{key}%")
+    end
+
+    def new_with_session params, session
+      super.tap do |user|
+        if data = session["devise.#{provider}_data"] &&
+          session["devise.#{provider}_data"]["extra"]["raw_info"]
+          user.email = data["email"] if user.email.blank?
+        end
+      end
+    end
+
+    def from_omniauth auth
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+        user.name = auth.info.name
+        user.image = auth.info.image
+      end
     end
   end
 

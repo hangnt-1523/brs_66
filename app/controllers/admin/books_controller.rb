@@ -1,6 +1,5 @@
 class Admin::BooksController < Admin::AdminController
   before_action :load_book, except: %i(index new create)
-<<<<<<< 4c0401f0c8751e0bee660a51833783e2b6ad0b7c
   before_action :list_categories, only: :index
 
   def index

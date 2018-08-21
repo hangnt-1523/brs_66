@@ -68,3 +68,6 @@ config/credentials.yml.enc
 
 # Ignore image
 public/uploads/*
+
+# Ignore application configuration
+/config/application.yml

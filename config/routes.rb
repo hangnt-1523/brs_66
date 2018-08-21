@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {confirmation: "confirmations"}
+  devise_for :users,
+    controllers: {confirmation: "confirmations",
+      omniauth_callbacks: "users/omniauth_callbacks"}
+
   root "books#index"
   get "/help", to: "static_pages#help"
   get "/login", to: "sessions#new"
