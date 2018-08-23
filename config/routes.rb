@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users,
     controllers: {confirmation: "confirmations",
-      omniauth_callbacks: "users/omniauth_callbacks"}
+      omniauth_callbacks: "users/omniauth_callbacks",
+      callbacks: "callbacks"}
 
   root "books#index"
   get "/help", to: "static_pages#help"
@@ -50,4 +51,7 @@ Rails.application.routes.draw do
       get :following, :follower_authors
     end
   end
+
+  get "callbacks", to: "callbacks#index"
+  get "recieved_data", to: "callbacks#recieved_data"
 end
