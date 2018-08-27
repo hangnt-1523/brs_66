@@ -59,4 +59,7 @@ Rails.application.routes.draw do
       get :following_book, :follower_books
     end
   end
+
+  notify_to :users, controllers: {notifcations: "users/notifcations"}
+  notify_to :admins, with_devise: :users, controllers: "admins/notifications_with_devise"
 end

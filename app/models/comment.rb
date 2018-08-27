@@ -10,6 +10,17 @@ class Comment < ApplicationRecord
   validates :content, length: {minimum: Settings.comment.minimum,
     maximum: Settings.comment.maximum}
 
+  acts_as_notifiable :users,
+    targets: ->(comment, key) {
+      ([comment.article.user] + comment.article.commented_users.to_a - [comment.user]).uniq
+    },
+  tracked: { only: [:new_reply], key: "comment.new_reply", send_later: false },
+  notifiable_path: :article_notifiable_path
+
+  def article_notifiable_path
+    article_path(article)
+  end
+
   def parent?
     self.parent.nil?
   end

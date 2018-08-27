@@ -7,7 +7,7 @@ user = User.new username: "Admin",
 user.skip_confirmation!
 user.save!
 
-user2 = User.new username: "Admin",
+user2 = User.new username: "User",
              email: "user1@gmail.com",
              password: "123456",
              avatar: "",

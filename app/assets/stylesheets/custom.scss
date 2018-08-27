@@ -1,5 +1,6 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'social-share-button';
 @import 'color.scss';
 
 /* typography */
@@ -40,7 +41,7 @@ body {
 
 body, html {
   height: 100%;
-  font-family: "Inconsolata", sans-serif;
+  font-family: 'Inconsolata', sans-serif;
 }
 
 header {
@@ -451,4 +452,8 @@ footer a:hover {
       text-decoration: none;
     }
   }
+}
+
+#notifications_in_header {
+  margin-top: 25px;
 }

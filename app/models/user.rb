@@ -33,6 +33,8 @@ class User < ApplicationRecord
 
   scope :follower_book, ->follower_book{where("follows.type_follow = ?", Follow.type_follows[:book]).order created_at: :desc}
 
+  acts_as_target
+
   class << self
     def search key
       where("username LIKE ? OR email LIKE ? OR name LIKE ?", "%#{key}%", "%#{key}%", "%#{key}%")

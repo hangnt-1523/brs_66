@@ -32,7 +32,7 @@
           class: "btn btn-primary" %>
       </div>
       <div class="share-book">
-        <%= social_share_button_tag @book.name, url: book_path(@book),
+        <%= social_share_button_tag @book.name, url: "https://e6a36afc.ngrok.io/books/#{@book.id}",
           desc: @book.name %>
       </div>
     <% end %>

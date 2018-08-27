@@ -3,13 +3,13 @@ class Book < ApplicationRecord
 
   belongs_to :category, optional: true
   has_many :comments, dependent: :destroy
-  has_many :likes
-  has_many :mark_books
-  has_many :order_detail
-  has_many :favorites
+  has_many :likes, dependent: :destroy
+  has_many :mark_books, dependent: :destroy
+  has_many :order_detail, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :author_books, dependent: :destroy
   has_many :authors, through: :author_books
-  has_many :follows
+  has_many :follows, dependent: :destroy, foreign_key: :follower_id
   has_many :passive_follows, class_name: Follow.name, foreign_key: :follower_id,
     dependent: :destroy
   has_many :follower_books, through: :passive_follows, source: :user
