@@ -1,0 +1,9 @@
+en:
+  layouts:
+    header:
+      app_name: "Books Reviewing"
+      books: "Books"
+      categories: "Categories"
+      submit: "Search"
+      login: "Login"
+      signup: "Signup"
